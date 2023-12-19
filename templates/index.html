@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/html5reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;400&family=Josefin+Sans&family=Judson&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Hind&display=swap" rel="stylesheet">
+    
+    <title>Julia Reel</title>
+    <link rel="shortcut icon" type="image/jpg" href="static/images/favicon3.png"/>
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+    <div class="skip"><a href="#main">Skip to Main Content</a></div>
+    <header>
+        
+        <div class="mainMenu">
+            <div class="menu_logo">                
+
+                <a href="index.html"><img src="static/images/logo_t.png" alt="Logo"></a>
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li><a class="current" href="index.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a class="dropbtn">PROJECTS</a>
+                        <div class="dropdown-content">
+                            <a href="myprojects.html">Project Portfolio</a>
+                            <a href="boggle.html">Boggle</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a target="_blank" href="Julia-Reel-Resume.pdf">RESUME</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        
+            <div class="intro-section">
+                <img class='logo' src="static/images/logo_t.png" alt="Logo">
+
+                <!-- <hr style="width: 100px; height: 1px; border:none;color:#333;background-color:#333;"> -->
+                
+                <div class="main_header">
+                    <p>
+                        
+                    Welcome to my portfolio, highlighting my skills,
+                    experience, and projects as a data analytics graduate from University of Michigan.
+                    </p>
+                </div>
+
+
+                <ul class="social-buttons">
+                    <li class="list-inline-item">
+                        <a href="https://www.linkedin.com/in/reelj/">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </li>
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:reel.julia@gmail.com">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </li>
+
+                </ul>
+                
+                </div>
+            
+        
+            <div class="About">
+                <h1>ABOUT ME</h1>
+                
+                <!-- <hr style="width: 100px; height: 1px; text-align: center;border:none;color:#333;background-color:#333;"> -->
+
+            
+                <div class="about_grid">
+                    <div class="headshot">
+                        <img src="static/images/myheadshot.jpeg" alt="headshot">
+
+                    </div>
+                    <div class="mainText">
+                        
+                        
+                        <div id="aboutPara">
+                            <p>Hello! My name is Julia, and I am a 2023 graduate of the 
+                                University of Michigan, Ann Arbor.
+                                This past April, I earned my Bachelor's of Science in Information 
+                                (BSI) degree with a concentration on Information Analysis.
+                            I am passionate about using technology and data to gather 
+                                insights and develop solutions to complex problems. Throughout my studies at the 
+                                University of Michigan, I have acquired numerous skills in a range of technologies including 
+                                Python, C++, HTML/CSS, and R. In summer 2022, I joined Elevance Health (formerly 
+                                Anthem Inc.) as a Data Analytics Intern in the Pharmacy Operations department, where I learned
+                                and developed my skills in data and business analytics. Next spring in 2024, I'm excited 
+                                to join Accenture in their Chicago office as an Analyst 
+                                with the Applied Intelligence division.
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+
+                    <div class="pbutton">
+                        <a id="projects_button" href='myprojects.html'><button>MY PROJECTS</button></a>
+
+                    </div>
+
+                    
+                </div>
+
+                
+            </div>
+
+            <!-- <div class="line"></div> -->
+
+            <div class="Skills">
+                <h1> SKILLS & INTERESTS</h1>
+
+                <h2> Some of the skills I have developed through my projects.</h2>
+                
+                
+                <div class="skills_grid">
+
+                    <div>
+                        <img src="static/images/001-python.png" alt="python">
+                        <h2>Python</h2>
+
+                        <p>Programming language for data analysis; experienced with libraries such as pandas, NumPy, SciPy, matplotlib, seaborn, scikit-learn.</p>
+                    </div>
+                    <div>
+                        <img src="static/images/006-coding.png">
+                        <h2>R</h2>
+
+                        <p>A programming language for statistical computing and graphics.</p>
+                    </div>
+                    <div>
+                        <img src="static/images/003-sql-file-format.png">
+                        <h2>SQL</h2>
+
+                        <p>A standard language for database creation and manipulation. 
+                            Skilled in SQL database design, normalization, and querying.
+                        </p>
+                    </div>
+                    <div>
+                        <img src="static/images/002-data-cleaning.png">
+                        <h2>Data Cleaning and Manipulation</h2>
+                        
+                        <p>Preparing messy data for analysis and visualization; primarily
+                            through Jupyter notebooks.
+                        </p>
+                    </div>
+
+                    <div>
+                        <img class="saturate" src="static/images/005-machine-learning.png">
+                        <h2>Machine Learning</h2>
+                        <p>Designing models that can predict trends and outcomes from past datapoints.</p>
+                    </div>
+                    <div>
+                        <img src="static/images/004-bar-chart.png">
+                        <h2>Data Visualization</h2>
+
+                        <p>Turning numbers into a visually appealing story.</p>
+                    </div>
+
+                </div>
+            </div>
+    
+
+      <footer class="footer2">
+        <div class="footer__content">
+          <div class="footer__logo">
+            <img src="static/images/logo_t.png" alt="Logo">
+          </div>
+          <div class="footer__links">
+            <h4>Quick Links</h4>
+            <nav>
+              <a href="#">Home</a>
+              <a href="#">Portfolio</a>
+              <a href="#">About</a>
+              <a href="#">Contact</a>
+            </nav>
+          </div>
+          <div class="footer__contact">
+            <h4>Contact</h4>
+            <p>Email: reel.julia@gmail.com</p>
+            <p>Phone: +1 203-747-1179</p>
+          </div>
+          <div class="footer__social">
+
+            <h4>Connect With Me</h4>
+            <ul class="social-buttons">
+                <li class="list-inline-item">
+                    <a href="https://www.linkedin.com/in/reelj/">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+                <li class="list-inline-item">
+                    <a href="mailto:reel.julia@gmail.com">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                </li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2023 Julia Reel. All rights reserved.</p>
+        </div>
+      </footer>
+      
+      
+    </div>
+</main>
+      
+</body>
+</html>
+

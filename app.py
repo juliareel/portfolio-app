@@ -1,5 +1,9 @@
 
+
 import random
+from flask import Flask, render_template, request, jsonify, flash
+from flask_talisman import Talisman
+
 
 # test edit
 def makePrefixDict(wordList):
@@ -151,13 +155,14 @@ def main(board=None, minLength=3, boardType='R'):
     return wordsFound
 
 
-main()
+# main()
 
 
-from flask import Flask, render_template, request, jsonify, flash
 
 app = Flask(__name__)
 app.secret_key = 'JERbi121698!'
+talisman = Talisman(app, force_https=True)
+
 
 
 @app.route('/')

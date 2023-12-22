@@ -2,7 +2,7 @@
 
 import random
 from flask import Flask, render_template, request, jsonify, flash
-from flask_talisman import Talisman
+# from flask_talisman import Talisman
 
 
 # test edit

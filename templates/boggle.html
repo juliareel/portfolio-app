@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;400&family=Josefin+Sans&family=Judson&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Hind&display=swap" rel="stylesheet">
+    
+    <title>Julia Reel</title>
+    <link rel="shortcut icon" type="image/jpg" href="static/images/favicon3.png"/>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+    <div class="skip"><a href="#main">Skip to Main Content</a></div>
+    <header>
+        
+        <div class="mainMenu">
+            <div class="menu_logo">
+                
+              <a href="index.html"><img src="static/images/logo_t.png" alt="Logo"></a>
+
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li><a href="index.html">HOME</a></li>
+                    <li class="dropdown">
+                        <a class="current" href="myprojects.html" class="dropbtn">PROJECTS</a>
+                        <div class="dropdown-content">
+                            <a href="myprojects.html">Project Portfolio</a>
+                            <a class="current" href="boggle.html">Boggle</a>
+                        </div>
+                    </li>
+                    <!-- <li><a href="gallery.html">INTERESTS</a></li> -->
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a target="_blank" href="Julia-Reel-Resume.pdf">RESUME</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" class="boggle">
+
+      <h1>Boggle Solver</h1>
+
+      
+
+      <div id="boggle_grid">
+
+        <!-- <img src="static/images/boggle.png"> -->
+        
+          <div id="boggle_form">
+              
+          <form class="boggle_form" method="post" action="{{ url_for('solve_boggle') }}">
+
+            <label for="min_length">Minimum word length:</label>
+            <div class="button-group">
+                <input type="radio" name="min_length" id="min_length_3" value="3"  {% if not request.form.get('min_length') or request.form.get('min_length') == '3' %}checked{% endif %}>
+                <label for="min_length_3">3</label>
+                
+                <input type="radio" name="min_length" id="min_length_4" value="4" {% if request.form.get('min_length') == '4' %}checked{% endif %}>
+                <label for="min_length_4">4</label>
+            </div>
+
+            <label for="board_type">Input a custom board or have one randomly generated for you:</label>
+          
+            <div class="button-group">
+              <input type="radio" name="board_type" id="board_type_custom" value="C" {% if not request.form.get('board_type') or request.form.get('board_type') == 'C' %}checked{% endif %} >
+              <label for="board_type_custom">Custom</label>
+
+              <input type="radio" name="board_type" id="board_type_random" value="R" {% if request.form.get('board_type') == 'R' %}checked{% endif %} >
+              <label for="board_type_random">Random</label> 
+            </div>
+
+            <div id="custom-board-input">
+
+
+              <label for="input_board" >Please enter all the 
+                letters for your board, with 4 letters on each line.
+              </label>
+    
+              
+              <textarea name="input_board" id="input_board" rows="4" cols="4">{{ letters }}</textarea>
+    
+            </div>
+            
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul class="flashes">
+                {% for message in messages %}
+                  <div>{{ message }}</div>
+                  <br>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+
+
+          </div>
+
+
+          <div id="find-words-div">
+              <div class="button-group">
+                <button  submit>Find words!</button>
+              </div>
+          </div>
+          </form>
+          
+
+          <div class="grid-board">
+
+            <!-- if we have a board filled with letters  -->
+            {% if board %}
+              <div class="board">
+                  {% for row in board %}
+                    {% set outer_loop = loop %}
+                      {% for cell in row %}
+                          <div id="{{outer_loop.index-1,loop.index-1}}">{{ cell }}</div>
+                      {% endfor %}
+                  {% endfor %}
+              </div>
+
+            <!-- if its just empty - no letters have been generated -->
+            {% else %}
+              <div class = "board">
+                {% for i in range(0,4) %}
+                  {% for j in range(0,4) %}
+                      <div>  </div>
+                  {% endfor %}
+                {% endfor %}
+              </div>
+              
+            {% endif %}
+
+          </div>
+
+
+          <div id="words_found">
+            {% if words_found %}
+              <br>
+              <div class="word-columns">
+                  {% for word in words_found %}
+                  
+                          <div class="word" id="{{words_found[word]}}">
+                            {{ word }}
+                            <!-- {{words_found[word]}} -->
+                        </div>
+                        <!-- <div id="word">
+                          {{ word }}
+                          {{words_found[word]}}
+                      </div> -->
+                  {% endfor %}
+              </div>
+          {% endif %}
+
+          </div>
+
+
+      </div>
+
+
+
+        <hr style="width: 0px; height: 1.5px; border:none;color:#333;background-color:#333;">
+
+       </div>
+
+      <div id="boggle_desc">
+          <h2>
+            About my Boggle Solver Project
+          </h2>
+    
+            <p>
+              This Python project implements a Boggle solver, showcasing strong 
+              algorithmic design and recursive techniques. The solver accommodates 
+              both user-input custom boards and randomly generated ones. It efficiently 
+              handles user inputs for board type and minimum word length. Leveraging 
+              natural language processing, the solver identifies valid words on the 
+              Boggle board. Key skills demonstrated include algorithmic design, recursion, 
+              user input handling, file handling for word dictionary, randomization, and 
+              functional decomposition. This Boggle solver project not only highlights 
+              fundamental programming skills but also showcases the application of advanced 
+              concepts in solving real-world word search challenges.
+            </p>
+        </div>
+      
+
+      <footer class="footer">
+        <div class="footer__content">
+          <div class="footer__logo">
+            <img src="static/images/logo_t.png" alt="Logo">
+          </div>
+          <div class="footer__links">
+            <h4>Quick Links</h4>
+            <nav>
+              <a href="#">Home</a>
+              <a href="#">Portfolio</a>
+              <a href="#">About</a>
+              <a href="#">Contact</a>
+            </nav>
+          </div>
+          <div class="footer__contact">
+            <h4>Contact</h4>
+            <p>Email: reel.julia@gmail.com</p>
+            <p>Phone: +1 203-747-1179</p>
+          </div>
+          <div class="footer__social">
+
+            <h4>Connect With Me</h4>
+            <ul class="social-buttons">
+                <li class="list-inline-item">
+                    <a href="https://www.linkedin.com/in/reelj/">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </li>
+                
+                <li class="list-inline-item">
+                    <a href="mailto:reel.julia@gmail.com">
+                        <i class="fa fa-envelope"></i>
+                    </a>
+                </li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2023 Julia Reel. All rights reserved.</p>
+        </div>
+      </footer>
+      
+      
+    </div>
+
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+          // Get the radio buttons
+          const randomRadio = document.getElementById('board_type_random');
+          const customRadio = document.getElementById('board_type_custom');
+          const customBoardInput = document.getElementById('custom-board-input');
+
+          // Initial check
+          if (customRadio.checked) {
+              customBoardInput.style.display = 'block';
+          } else {
+              customBoardInput.style.display = 'none';
+          }
+
+          // Add event listeners
+          randomRadio.addEventListener('change', function() {
+              customBoardInput.style.display = 'none';
+          });
+
+          customRadio.addEventListener('change', function() {
+              customBoardInput.style.display = 'block';
+          });
+      });
+
+
+
+      document.addEventListener('DOMContentLoaded', function() {
+    const wordResults = document.querySelectorAll('.word-columns .word');
+    let clickedWord = null;
+
+    wordResults.forEach(word => {
+        // Hover event
+        word.addEventListener('mouseover', function() {
+            if (clickedWord === null) {
+                fillWord(word);
+            }
+        });
+
+        // Mouseout event
+        word.addEventListener('mouseout', function() {
+            if (clickedWord === null) {
+                unfillWord(word);
+            }
+        });
+
+        // Click event
+        word.addEventListener('click', function() {
+            if (clickedWord === word) {
+                clickedWord = null;
+                unfillWord(word);
+            } else {
+                if (clickedWord !== null) {
+                    unfillWord(clickedWord);
+                }
+                clickedWord = word;
+                fillWord(word);
+            }
+        });
+    });
+
+    function fillWord(word) {
+        const nodeListStr = word.id;
+        const nodeList = JSON.parse(nodeListStr);
+
+        for (let i = 0; i < nodeList.length; i++) {
+            const coordinates = nodeList[i];
+            const correspondingNodeId = `(${coordinates[0]}, ${coordinates[1]})`;
+            const correspondingNode = document.getElementById(correspondingNodeId);
+            correspondingNode.style.backgroundColor = 'orange';
+            word.style.backgroundColor = 'orange';
+
+          
+        }
+
+      
+    }
+
+    function unfillWord(word) {
+        const nodeListStr = word.id;
+        const nodeList = JSON.parse(nodeListStr);
+
+        for (let i = 0; i < nodeList.length; i++) {
+            const coordinates = nodeList[i];
+            const correspondingNodeId = `(${coordinates[0]}, ${coordinates[1]})`;
+            const correspondingNode = document.getElementById(correspondingNodeId);
+            correspondingNode.style.backgroundColor = '';
+            word.style.backgroundColor = '';
+        }
+    }
+});
+
+  </script>
+</main>
+
+</body>
+</html>
+

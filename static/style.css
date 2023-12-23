@@ -68,8 +68,14 @@ a {
 }
 
 
+.dropdown-content a:active {
+    background-color: #ddd;
+    cursor: pointer;
+}
 
-
+.dropdown:active .dropdown-content {
+    display: block;
+}
 
 
 

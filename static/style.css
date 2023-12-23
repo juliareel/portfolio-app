@@ -67,17 +67,15 @@ a {
     display: block;
 }
 
-
-.dropdown-content a:active {
-    background-color: #ddd;
-    cursor: pointer;
+#projectsToggle {
+    display: none;
 }
-
-.dropdown:active .dropdown-content {
+#projectsToggle:checked + .dropdown-content {
     display: block;
 }
-
-
+.dropbtn {
+    cursor: pointer;
+}
 
 
 #boggle_desc {

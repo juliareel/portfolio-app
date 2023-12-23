@@ -196,6 +196,9 @@ footer p {
     flex-direction: column;
   }
 
+  .footer a {
+    color: rgb(198, 198, 198);
+  }
 
   
   .footer__logo img {

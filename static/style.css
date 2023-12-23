@@ -194,7 +194,10 @@ footer p {
     margin: 15%;
     row-gap: 1em;
     flex-direction: column;
+    font-size: 14px;
   }
+
+
 
   .footer a {
     color: rgb(198, 198, 198);
@@ -256,6 +259,7 @@ footer p {
     bottom: 0;
     left: 0;
     width: 100%;
+    font-size: 12px;
   }
 
   /* .footer p {
@@ -511,12 +515,14 @@ button:hover{
     height: 50px;
   }
 
-  .nav .current {
+  .current {
       color: rgb(27, 92, 128);
       font-weight: bolder;
-      /* text-decoration: underline; */
+      text-decoration: underline;
       text-underline-offset: 0.5em;
   }
+
+
 
 .menu_logo{
     display: none;
@@ -747,6 +753,7 @@ button:hover{
     opacity: 0;
     padding-top: 30px;
     z-index: 3;
+    overflow: scroll;
   }
   .overlay:target {
     visibility: visible;
@@ -755,8 +762,10 @@ button:hover{
   }
   
   .popup {
-    margin: 70px auto;
-    padding: 80px;
+    /* margin: 70px auto;
+    padding: 80px; */
+    margin: 5%;
+    padding: 5%;
     background: #fff;
     border-radius: 5px;
     width: 80%;
@@ -782,8 +791,9 @@ button:hover{
 
   .popup h3 {
     font-size: 2em;
-    margin-bottom: 2em;
-    font-weight:900
+    margin-bottom: 1em;
+    font-weight:900;
+    line-height: 1.2em;
   }
 
   #boggle_grid {

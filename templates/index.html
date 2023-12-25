@@ -138,7 +138,7 @@
                 <h2> Some of the skills I have developed through my projects.</h2>
                 
                 
-                <div class="skills_grid">
+                <div class="skills_grid container reveal fade-left">
 
                     <div>
                         <img src="static/images/001-python.png" alt="python">
@@ -189,7 +189,7 @@
                 
                 <div class="experience_grid">
                     
-                    <div class="experiences shadow">
+                    <div class="experiences shadow container reveal fade-bottom">
                     
                         <h4>Beginning March 2024</h4>
                         <h2> (Incoming) Consulting Analyst</h2>
@@ -203,7 +203,7 @@
 
                     </div>
 
-                    <div class="experiences shadow">
+                    <div class="experiences shadow container reveal fade-bottom">
                         <h4>January 2022 - August 2023</h4>
                         <h2>Media Assistant / Data Analyst</h2>
                         <i class="fa fa-map-marker" style="color: #2784af8f;"></i>   University of Michigan — Language Resource Center, Ann Arbor MI
@@ -215,7 +215,7 @@
                         </p>
                     </div>
 
-                    <div class="experiences shadow">
+                    <div class="experiences shadow container reveal fade-bottom">
                         <h4>August 2022 - April 2023</h4>
                         <h2>Instructional Aide</h2>
                         <i class="fa fa-map-marker" style="color: #2784af8f;"></i>   University of Michigan — School of Information, Ann Arbor MI
@@ -230,7 +230,7 @@
                         </p>
                     </div>
 
-                    <div class="experiences shadow">
+                    <div class="experiences shadow container reveal fade-bottom">
                         <h4>June 2022 - August 2022</h4>
                         <h2>Pharmacy Data Analytics Intern</h2>
                         <i class="fa fa-map-marker" style="color: #2784af8f;"></i>   Elevance Health, Remote
@@ -298,6 +298,27 @@
       
       
     </div>
+
+    <script>
+        function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
+
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    } else {
+      reveals[i].classList.remove("active");
+    }
+  }
+}
+
+window.addEventListener("scroll", reveal);
+
+    </script>
 </main>
       
 </body>

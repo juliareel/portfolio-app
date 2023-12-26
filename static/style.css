@@ -22,12 +22,11 @@ a {
 }
 
 .nav a:hover {
-    color: rgb(27, 92, 128);
+    color: rgb(42, 116, 156);
     font-weight: bolder;
     text-underline-offset: 0.5em;
+    transition: color 0.3s ease;
 }
-
-
 
 
 
@@ -40,13 +39,16 @@ a {
 }
 
 .dropdown-content {
-    display: none;
+    opacity: 0; /* Initial opacity set to 0 */
+    height: 0; /* Initial height set to 0 */
+    overflow: hidden; /* Hide any content that overflows the container */
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 1;
     cursor: pointer;
+    transition: opacity 0.8s ease, height 0.8s ease; /* Add transitions for opacity and height with easing */
 }
 
 .dropdown-content a {
@@ -56,25 +58,40 @@ a {
     display: block;
     text-align: left;
     cursor: pointer;
+    transition: all ease 0.5s;
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+    /* background-color: #ddd; */
     cursor: pointer;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+    opacity: 1; /* Set opacity to 1 on hover */
+    height: auto; /* Set height to auto to reveal content */
 }
 
 #projectsToggle {
     display: none;
 }
+
 #projectsToggle:checked + .dropdown-content {
-    display: block;
+    opacity: 1;
+    height: auto;
 }
+
 .dropbtn {
     cursor: pointer;
+}
+
+.dropdown:hover {
+    color: rgb(27, 92, 128);
+    transition: color 0.3s ease;
+}
+
+.dropbtn:hover {
+    color: rgb(27, 92, 128);
+    transition: color 0.3s ease;
 }
 
 
@@ -159,13 +176,16 @@ ul.social-buttons li a:hover {
 
 .Skills h2 {
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     /* margin: 0% 5% 25%; */
+    font-weight: 100;
 }
 
 .Skills h3 {
     text-align: center;
     font-size: 18px;
+    margin: 7px 7px;
+    font-family: 'Montserrat';
 }
 
 .Skills p {
@@ -350,7 +370,7 @@ a:visited {
 .About, .Skills, .Experience {
     /* background-color: white; */
     padding: 25px;
-    line-height: 30px;
+    line-height: 25px;
 }
 
 .About, .Experience {
@@ -386,6 +406,8 @@ button {
     transition: all 0.3s;
     color:white;
     color: #393939;
+    border-radius: 5px;
+
 }
 
 
@@ -424,6 +446,7 @@ button:hover{
 .About p{
     margin-bottom: 15px;
     margin-top: 30px;
+    line-height: 28px;
 }
 
 
@@ -492,13 +515,15 @@ button:hover{
 
 
 #projects > h1, #contact > h1 , .boggle > h1{
-    font-size: 3em;
+    font-size: 2em;
     font-family: 'montserrat', sans-serif;
     text-align: center;
     color: black;
     height: 150px;
     padding-top: 100px;
-    font-weight: 100;
+    font-weight:900;
+    background-color: white;
+    padding: 100px -30px;
 }
 
 
@@ -682,7 +707,7 @@ button:hover{
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
-    width: 275px;
+    width: 370px;
 
   }
   .pcard:hover {
@@ -742,7 +767,7 @@ button:hover{
   #project-card-section {
       column-gap: 20px;
       background-color: #f9f9f9;
-      padding: 5em 10%;
+      padding: 3em 5%;
   }
 
   
@@ -885,7 +910,7 @@ button:hover{
     background-color: rgb(229, 240, 246);
     color: black;
     cursor: pointer;
-    border-radius: 10%;
+    border-radius: 5px;
 }
 
 .button-group label:hover {
@@ -898,7 +923,7 @@ button:hover{
 }
 
 #boggle_grid button {
-    border-radius: 10%;
+    border-radius: 5px;
     padding: 1em;
     text-align:center;
     background-color: rgba(255, 166, 0, 0.504);
@@ -921,7 +946,7 @@ button:hover{
 
 .word {
     background-color: rgb(229, 240, 246);
-    border-radius: 25%;
+    border-radius: 10px;
     padding: 10px;
     text-align: center;
     box-shadow: 0 0 10px rgba(96, 99, 101, 0.455);
@@ -945,7 +970,7 @@ button:hover{
 .experience_grid {
     display: flex;
     justify-content: center;
-    column-gap: 1em;
+    column-gap: 2em;
     flex-wrap: wrap;
     row-gap: 2em;
 }
@@ -954,9 +979,14 @@ button:hover{
     background-color: #f9f9f9;
     width: 80%;
     padding: 15%
+
 }
 
-
+.experience_grid div:hover {
+    transform: scale(1.05, 1.05);
+    transition: all ease 0.3s;
+    /* cursor: pointer; */
+}
 
 .experiences {
     margin-bottom: 40px;
@@ -969,22 +999,35 @@ button:hover{
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
+
+
+.Experience {
+    padding-bottom: 10em;
+    color: rgb(93, 93, 93);
+    font-family: 'hind';
+}
+
 .Experience h4 {
     color: #547d9e;
     font-weight: 100;
+    /* font-family: 'Montserrat'; */
+    margin-bottom: 8px;
 }
 
 .Experience h1 {
     margin: 25px 0px 40px 0px;
+    color: black;
 }
 
+.Experience h2 {
+    color: black;
+    font-family: 'montserrat';
+    margin-bottom:10px;
+}
 .Experience p {
     margin-top: 15px;
     line-height: 1.8em;
-}
-
-.Experience {
-    padding-bottom: 10em;
+    font-family: 'hind';
 }
 
 .reveal {
@@ -995,12 +1038,12 @@ button:hover{
     opacity: 1;
   }
   .active.fade-bottom {
-    animation: fade-bottom 1s ease-in;
+    animation: fade-bottom 0.5s ease-in;
   }
 
 
   .active.fade-left {
-    animation: fade-left 1s ease-in;
+    animation: fade-left 0.5s ease-in;
   }
 
   @keyframes fade-bottom {
